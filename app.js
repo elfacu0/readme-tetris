@@ -24,4 +24,4 @@ const PlayRoute = require('./routes/Play');
 app.use('/play',PlayRoute);
 
 
-app.listen(3000,console.log("start"));
+app.listen(process.env.PORT || 3000 ,console.log("start"));
