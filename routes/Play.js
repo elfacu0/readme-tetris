@@ -7,6 +7,7 @@ const Game = require("../game/game");
 const Client = require("ftp");
 
 const ALLOWED_ACTIONS = ["right", "left", "down", "rotate", "drop"];
+
 const uploadImage = async (canvas) => {
   const dataURL = canvas.elt.toDataURL();
 
@@ -56,7 +57,7 @@ router.get("/:action", async (req, res) => {
       //       console.log("saved canvas as out.png");
       //     })
       //     .catch(console.error);
-      uploadImage(canvas);
+      // uploadImage(canvas);
     };
   }
 
