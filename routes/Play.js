@@ -65,7 +65,7 @@ router.get("/:action", async (req, res) => {
     { _id: process.env.MONGOOSE_ID },
     game.saveGame()
   );
-  res.redirect('https://github.com/elfacu0')
+  res.redirect('https://github.com/elfacu0');
 });
 
 module.exports = router;
