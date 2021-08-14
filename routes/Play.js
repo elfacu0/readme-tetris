@@ -4,31 +4,30 @@ const router = express.Router();
 const Tetris = require("../models/Tetris");
 const p5 = require("node-p5");
 const Game = require("../game/game");
-const Client = require("ftp");
 
 const ALLOWED_ACTIONS = ["right", "left", "down", "rotate", "drop"];
 
-const uploadImage = async (canvas) => {
-  const dataURL = canvas.elt.toDataURL();
+// const uploadImage = async (canvas) => {
+//   const dataURL = canvas.elt.toDataURL();
 
-  let base64Data = dataURL.replace(/^data:image\/png;base64,/, "");
-  base64Data += base64Data.replace("+", " ");
-  const binaryData = Buffer.from(base64Data, "base64");
+//   let base64Data = dataURL.replace(/^data:image\/png;base64,/, "");
+//   base64Data += base64Data.replace("+", " ");
+//   const binaryData = Buffer.from(base64Data, "base64");
 
-  const c = new Client();
-  c.on("ready", function () {
-    c.put(binaryData, "out.png", function (err) {
-      if (err) throw err;
-      c.end();
-    });
-  });
+//   const c = new Client();
+//   c.on("ready", function () {
+//     c.put(binaryData, "out.png", function (err) {
+//       if (err) throw err;
+//       c.end();
+//     });
+//   });
 
-  c.connect({
-    host: "ftp.sirv.com",
-    user: process.env.SIRV_USER,
-    password: process.env.SIRV_PASSWORD,
-  });
-};
+//   c.connect({
+//     host: "ftp.sirv.com",
+//     user: process.env.SIRV_USER,
+//     password: process.env.SIRV_PASSWORD,
+//   });
+// };
 
 // Here it gets the data from db, then creates the game, moves it and then saves the data and updates the new image
 router.get("/:action", async (req, res) => {
