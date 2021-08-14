@@ -47,6 +47,7 @@ app.get("/", async (req, res) => {
     "Cache-Control": "no-cache",
     'Content-Length':  img.length,
     'ETag': canvas.elt.toDataURL().slice(332,350) + Date.now().toString(),
+    'Expires': new Date(Date.now() - 3600).toUTCString()
   });
   res.end(img);
 });
