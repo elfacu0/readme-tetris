@@ -1,3 +1,6 @@
 .env
 /game-p5
 node_modules
+
+.vercel
+package-lock.json
