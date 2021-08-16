@@ -42,12 +42,14 @@ app.get("/", async (req, res) => {
   let p5Instance = p5.createSketch(sketch);
 
   const img = Buffer.from(canvas.elt.toDataURL().replace(/^data:image\/png;base64,/, ''), 'base64');
+  const now = Date.now();
   res.writeHead(200, {
     "Content-Type": "image/png",
-    "Cache-Control": "no-cache",
+    "Cache-Control": "private",
     'Content-Length':  img.length,
     'ETag': canvas.elt.toDataURL().slice(332,350) + Date.now().toString(),
-    'Expires': new Date(Date.now() - 3600).toUTCString()
+    'Expires': new Date(now - 3600).toUTCString(),
+    'Last-Modified': new Date(now - 300).toUTCString()
   });
   res.end(img);
 });
